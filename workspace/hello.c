@@ -3,11 +3,11 @@
 int a = 2;
 
 int main(void) {
-    int a = 3;
+    int b = 3;
 
-    printf("hello");
+    printf("hello \n");
 
-    a = 4;
-
+    b = 4;
+    printf("%i \n", a);
     return 0;
 }
