@@ -47,16 +47,42 @@ int scanLineAsInt() {
 	scanf("%i\n",&buf);
 	return buf;
 }
+struct winner{
+	int annee;
+	char *noms;
+	char *raison;
+};
+typedef struct winner Winner;
 
+void readWinners(Winner **w, int *nbGagnant){
+	*nbGagnant = scanLineAsInt();
+	*w=(Winner *)calloc(*nbGagnant,sizeof(Winner));
+	for(int i=0; i<*nbGagnant; i++){
+		(*w)[i].annee = scanLineAsInt();
+		(*w)[i].noms = scanLine();
+		(*w)[i].raison = scanLine();
+	}
+}
+void printWinners(Winner **w, int *nbGagnant){
+	printf("%i\n", *nbGagnant);
+	
+	for(int i=0; i<*nbGagnant; i++){
+		printf("%i\n",(*w)[i].annee);
+		printf("%s\n",(*w)[i].noms);
+		printf("%s\n",(*w)[i].raison);
+	}
+}
 
 
 int main(void)
 {
 
-	char  *nbGagnants = scanLine();
-	printf("nbGagnants = %s",nbGagnants);
+	//int nbGagnants = scanLineAsInt();
+	//printf("nbGagnants = %i",nbGagnants);
 	//EXO 1
-	//readWinners();
-	//printWinners();
+	int nbGagnants;
+	Winner *w;
+	readWinners(&w, &nbGagnants);
+	printWinners(&w, &nbGagnants);
 	return EXIT_SUCCESS;
 }
