@@ -78,7 +78,7 @@ void mult_matrice_gen(int64_t **resultat, int64_t **matriceA, int64_t **matriceB
     }
 }
 
-//Exo 4.1
+//Exo 4
 enum Mois {jan = 1, fev, mars, avr, mai, juin, juil, aout, sept, oct, nov, dec};
 
 struct Date {
