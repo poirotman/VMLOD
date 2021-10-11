@@ -107,7 +107,16 @@ Date creerDateParCopie(){
     scanf("%i",&d.annee);
     return d;
 }
-
+Date *newDate(){
+    Date *d = (Date *)malloc(sizeof(Date));
+    printf("Jour :");
+    scanf("%i", &d->jour);
+    printf("Mois :");
+    scanf("%i", (int*)&d->mois);
+    printf("Annee :");
+    scanf("%i",&d->annee);
+    return d;
+}
 void afficheDate(Date *d){
     char *Mois;
     switch (d->mois){
@@ -185,6 +194,8 @@ int main(void) {
     afficheDate(&d);
     d = creerDateParCopie();
     afficheDate(&d);
-
+    Date *p;
+    p = newDate();
+    afficheDate(p);
     return EXIT_SUCCESS;
 }

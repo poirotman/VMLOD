@@ -34,7 +34,7 @@ char* scanLine()
 		line[254] = ']';
 		// line[255] = '\0'; // useless because already initialized by calloc
 
-		// let's skip all chars untli the end of line
+		// let's skip all chars until the end of line
 		while (( (c = getchar()) != '\n') && c != EOF) ;
 	}
 
@@ -49,11 +49,14 @@ int scanLineAsInt() {
 }
 
 
+
 int main(void)
 {
 
-	int nbGagnants = scanLineAsInt();
-	printf("nbGagnants = %i\n",nbGagnants);
-
+	char  *nbGagnants = scanLine();
+	printf("nbGagnants = %s",nbGagnants);
+	//EXO 1
+	//readWinners();
+	//printWinners();
 	return EXIT_SUCCESS;
 }
