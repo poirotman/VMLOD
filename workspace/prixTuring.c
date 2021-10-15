@@ -47,6 +47,8 @@ int scanLineAsInt() {
 	scanf("%i\n",&buf);
 	return buf;
 }
+
+// Question 1.
 struct winner{
 	int annee;
 	char *noms;
@@ -73,16 +75,42 @@ void printWinners(Winner **w, int *nbGagnant){
 	}
 }
 
+//Question 2.
+int infosAnnee(int annee, Winner **w, int *nbGagnant){
+	printf("annee: %i\n", annee);
+	for(int i=0; i<*nbGagnant; i++){
+		if((*w)[i].annee == annee){
+			printf("L'annee %i, le(s) gagnant(s) ont été: %s\n", annee, (*w)[i].noms);
+			printf("Nature des travaux : %s\n", (*w)[i].raison);
+			return 0;
+		}
+	}
+	printf("Aucunes donnée sur l'année: %i\n", annee);
+	return 0;
+}
 
-int main(void)
+
+int main(int argc, char *argv[])
 {
-
 	//int nbGagnants = scanLineAsInt();
 	//printf("nbGagnants = %i",nbGagnants);
-	//EXO 1
+	//Question 1
 	int nbGagnants;
 	Winner *w;
 	readWinners(&w, &nbGagnants);
-	printWinners(&w, &nbGagnants);
+	//Question 2
+	int annee;
+	if(argv[2]!=NULL && argv[1] != NULL){
+		printf("%s",argv[1]);
+		if (strcmp(argv[1] ,"infosAnnee")==0){
+		sscanf(argv[2],"%i", &annee );
+		printf("%i",annee);
+		infosAnnee(annee, &w, &nbGagnants);
+		}
+	}
+	else{
+		printWinners(&w, &nbGagnants);
+	}
+	free(w);
 	return EXIT_SUCCESS;
 }
