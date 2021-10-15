@@ -101,11 +101,11 @@ int main(int argc, char *argv[])
 	//Question 2
 	int annee;
 	if(argv[2]!=NULL && argv[1] != NULL){
-		printf("%s",argv[1]);
+		
 		if (strcmp(argv[1] ,"infosAnnee")==0){
-		sscanf(argv[2],"%i", &annee );
-		printf("%i",annee);
-		infosAnnee(annee, &w, &nbGagnants);
+			sscanf(argv[2],"%i", &annee );
+			printf("%i",annee);
+			infosAnnee(annee, &w, &nbGagnants);
 		}
 	}
 	else{
