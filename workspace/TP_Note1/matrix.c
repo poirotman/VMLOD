@@ -23,7 +23,8 @@ Matrix readMatrix(){
         for(int y=0; y<colonnes; y++){
             scanf("%i", &(matrice.Matrice[i][y]));
         }
-    };
+        scanf("\n");
+    }
     return matrice;
 }
 
@@ -32,6 +33,6 @@ int main(void) {
     scanf("%i", &nbMatrice);
     Matrix mat;
     mat = readMatrix();
-    printf("%i", mat.Matrice[0][0]);
+    printf("%i", mat.Matrice[0][1]);
     return 0;
 }
