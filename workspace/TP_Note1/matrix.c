@@ -20,12 +20,10 @@ Matrix readMatrix(){
     matrice.Matrice=calloc(lignes, sizeof(int*) );
     for(int i=0; i<lignes; i++){
         matrice.Matrice[i]=(int*)calloc(colonnes, sizeof(int));
-    };
-    for(int i =0; i<lignes; i++){
         for(int y=0; y<colonnes; y++){
             scanf("%i", &(matrice.Matrice[i][y]));
         }
-    }
+    };
     return matrice;
 }
 
