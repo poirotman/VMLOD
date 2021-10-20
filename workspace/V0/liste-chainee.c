@@ -56,7 +56,7 @@ void afficheListe_r(Liste l) {
 }
 
 void detruireElement(Element e) {
-	e = NULL;
+	
 }
 
 // Détruit tous les éléments de la liste l
@@ -65,10 +65,8 @@ void detruire_i(Liste l) {
 	Liste tmp=NULL;
 	while(l!=NULL){
 		tmp = l->suiv;
-		free(l);
 		detruireElement(l->val);
-		l->suiv=NULL;
-		printf("Boucle");
+		free(l);
 		l=tmp;	
 	}
 }

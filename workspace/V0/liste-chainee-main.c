@@ -77,8 +77,8 @@ int main(void){
 	afficheListe_r(l);
 
 	detruire_i(l);
-	afficheListe_r(l);
-	printf("estVide(l) = %s\n",estVide(l)?"TRUE":"FALSE");
+	l = NULL;
+	
 
 	return EXIT_SUCCESS;
 }
