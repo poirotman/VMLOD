@@ -25,6 +25,7 @@ Matrix readMatrix(){
         }
         scanf("\n");
     }
+    
     return matrice;
 }
 
