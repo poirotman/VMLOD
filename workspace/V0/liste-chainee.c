@@ -73,7 +73,13 @@ void detruire_i(Liste l) {
 
 // version récursive
 void detruire_r(Liste l) {
-	TODO;
+	if(l->suiv == NULL){
+		detruireElement(l->val);
+		free(l);
+	}
+	else{
+		detruire_r(l->suiv);
+	}
 }
 
 // retourne la liste dans laquelle l'élément v a été ajouté en fin
@@ -153,7 +159,9 @@ Liste retirePremier_i(Element v, Liste l) {
 		while(l->suiv->val != v){
 			l=l->suiv;
 		}
-		l->suiv = l->suiv->suiv;	
+		Liste newSuiv = l->suiv->suiv;
+		free(l->suiv);
+		l->suiv = newSuiv;	
 	}
 	return tmp;
 	
@@ -166,7 +174,9 @@ Liste retirePremier_i(Element v, Liste l) {
 Liste retirePremier_r(Element v, Liste l) {
 	if(cherche_r(v,l)!=NULL){
 		if(l->suiv->val==v){
-			l->suiv = l->suiv->suiv;
+			Liste newSuiv = l->suiv->suiv;
+			free(l->suiv);
+			l->suiv = newSuiv;
 		}
 		else{
 			retirePremier_r(v,l->suiv);

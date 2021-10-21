@@ -76,7 +76,7 @@ int main(void){
 	l = retirePremier_r(99,l);
 	afficheListe_r(l);
 
-	detruire_i(l);
+	detruire_r(l);
 	l = NULL;
 	
 
