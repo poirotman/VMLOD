@@ -156,6 +156,13 @@ Liste cherche_r(Element v,Liste l) {
 Liste retirePremier_i(Element v, Liste l) {
 	Liste tmp = l;
 	if(cherche_i(v,l)!=NULL){
+		if(l->val == v){
+			tmp=tmp->suiv;
+			detruireElement(l->val);
+			free(l);
+			l=NULL;
+			return tmp;
+		}
 		while(l->suiv->val != v){
 			l=l->suiv;
 		}
@@ -173,6 +180,13 @@ Liste retirePremier_i(Element v, Liste l) {
 // version recursive
 Liste retirePremier_r(Element v, Liste l) {
 	if(cherche_r(v,l)!=NULL){
+		if(l->val == v){
+			Liste tmp = l->suiv;
+			detruireElement(l->val);
+			free(l);
+			l=NULL;
+			return tmp;
+		}
 		if(l->suiv->val==v){
 			Liste newSuiv = l->suiv->suiv;
 			free(l->suiv);
@@ -187,7 +201,14 @@ Liste retirePremier_r(Element v, Liste l) {
 
 
 void afficheEnvers_r(Liste l) {
-	TODO;
+	if(l->suiv == NULL){
+		afficheElement(l->val);
+	}
+    else{
+		afficheEnvers_r(l->suiv);
+		afficheElement(l->val);
+	}
+
 }
 
 

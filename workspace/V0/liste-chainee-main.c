@@ -52,7 +52,7 @@ int main(void){
 		printf("\n");
 	}
 
-	printf("retirePremier_i(1)   : ");
+	printf("retirePremier_i(1)   : \n");
 	l = retirePremier_i(1,l);
 	afficheListe_r(l);
 
@@ -76,6 +76,7 @@ int main(void){
 	l = retirePremier_r(99,l);
 	afficheListe_r(l);
 
+	afficheEnvers_r(l);
 	detruire_r(l);
 	l = NULL;
 	
