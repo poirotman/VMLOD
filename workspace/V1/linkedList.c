@@ -26,11 +26,6 @@ Liste ajoutTete(Element v, Liste l) {
 		return s;
 }
 
-//En externe
-void afficheElement(Element e) {
-	printf("%i\n",e);
-}
-
 // affiche tous les éléments de la liste l
 // Attention, cette fonction doit être indépendante du type des éléments de la liste
 // utiliser une fonction annexe affiche_element
@@ -55,11 +50,6 @@ void afficheListe_r(Liste l) {
 	}
 }
 
-//En externe
-//Detruit l'élement e
-void detruireElement(Element e) {
-	
-}
 
 // Détruit tous les éléments de la liste l
 // version itérative
@@ -119,12 +109,6 @@ Liste ajoutFin_r(Element v, Liste l) {
 	return l;
 }
 
-//En externe
-// compare deux elements
-bool equalsElement(Element e1, Element e2){
-	return e1 == e2;
-}
-
 // Retourne un pointeur sur l'élément de la liste l contenant la valeur v ou NULL
 // version itérative
 Liste cherche_i(Element v,Liste l) {
@@ -158,7 +142,7 @@ Liste cherche_r(Element v,Liste l) {
 // version itérative
 Liste retirePremier_i(Element v, Liste l) {
 	Liste tmp = l;
-	if(cherche_i(v,l)!=NULL){
+	if(cherche_i(v,l)!=NULL){ // 2 parcours à ne plus refaire.s
 		if(l->val == v){
 			tmp=tmp->suiv;
 			detruireElement(l->val);
