@@ -1,21 +1,68 @@
-#include "linkedList.h"
+
 #include "linkedListOfMusic.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+Music *createMusic(char* line){
+    Music *musique= calloc(1,sizeof(Music));
+    char *copy=strdup(line);
+    musique->name = strsep(&copy,",");
+    //printf("%s\n",musique->name);
+
+    musique->artist = strsep(&copy,",");
+    //printf("%s\n",musique->artist);
+
+    musique->album = strsep(&copy,",");
+    //printf("%s\n",musique->album);
+
+    musique->genre = strsep(&copy,",");
+    //printf("%s\n",musique->genre);
+
+    musique->discNumber = atoi( strsep(&copy,","));
+    // printf("%i\n",musique->discNumber);
+
+    musique->trackNumber = atoi( strsep(&copy,","));
+    // printf("%i\n",musique->trackNumber);
+
+    musique->year = atoi( strsep(&copy,","));
+    // printf("%i\n",musique->year);
+    
+    return musique;
+}
+
+Liste createList(FILE *f, char* line,Liste ListMusic){
+    fgets(line,255,f);
+    Music *musique = calloc(1,sizeof(Music));
+    musique = createMusic(line);
+    ListMusic = ajoutFin_i(musique, ListMusic);
+    return ListMusic;
+}
+
 void afficheElement(Element e){
     Music *m = (Music*)e; 
-    printf("%s\n", m->name);
-    printf("%s\n", m->artist);
-    printf("%s\n", m->album);
-    printf("%s\n", m->genre);
-    printf("%i\n", m->discNumber);
-    printf("%i\n", m->trackNumber);
+    printf("%s,", m->name);
+    printf("%s,", m->artist);
+    printf("%s,", m->album);
+    printf("%s,", m->genre);
+    if(m->discNumber == 0){
+        printf(",");
+    }
+    else{
+        printf("%i,", m->discNumber);
+    }
+    printf("%i,", m->trackNumber);
     printf("%i\n", m->year);
 }
 void detruireElement(Element e){
-    free(e);
+    Music *m = (Music*)e; 
+    // free(m->name);
+    // free(m->artist);
+    // free(m->album);
+    // free(m->genre);
+    free(m);
     e=NULL;
+    
 }
 bool equalsElement(Element e1, Element e2){
     Music *m1 = (Music *)e1;
