@@ -37,7 +37,7 @@ void afficheListe_i(Liste l) {
 		afficheElement(p->val);
 		p=p->suiv;
 	}
-	printf("\n");
+	//printf("\n");
 }
 
 // version recursive

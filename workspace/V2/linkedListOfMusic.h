@@ -21,3 +21,6 @@ Liste createList(FILE *f, char* line,Liste ListMusic);
 
 //Fontcion qui créer une musique
 Music *createMusic(char* line);
+
+//Fonction qui tri la Liste de musique
+Liste triListOfMusic(Liste ListMusic);

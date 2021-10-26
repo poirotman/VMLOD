@@ -7,6 +7,7 @@
 Music *createMusic(char* line){
     Music *musique= calloc(1,sizeof(Music));
     char *copy=strdup(line);
+    
     musique->name = strsep(&copy,",");
     //printf("%s\n",musique->name);
 
@@ -27,15 +28,33 @@ Music *createMusic(char* line){
 
     musique->year = atoi( strsep(&copy,","));
     // printf("%i\n",musique->year);
-    
     return musique;
 }
 
 Liste createList(FILE *f, char* line,Liste ListMusic){
     fgets(line,255,f);
-    Music *musique = calloc(1,sizeof(Music));
-    musique = createMusic(line);
+    Music *musique = createMusic(line);
     ListMusic = ajoutFin_i(musique, ListMusic);
+    return ListMusic;
+}
+
+Liste triListOfMusic(Liste ListMusic){
+    Music *minAnnee = (Music *)ListMusic->val;
+    Liste FirstMusic = ListMusic;
+    if(ListMusic->suiv == NULL){
+        return ListMusic;
+    }
+    else{
+        while(ListMusic!=NULL){
+            Music *tmp = (Music *)ListMusic->val;
+            if(tmp->year<minAnnee->year){
+                minAnnee = ListMusic->val;
+            }
+        }
+    }
+    ListMusic=retirePremier_r(minAnnee,FirstMusic);
+    ListMusic=ajoutTete(minAnnee,FirstMusic);
+    ListMusic->suiv=triListOfMusic(ListMusic->suiv);
     return ListMusic;
 }
 
@@ -56,14 +75,12 @@ void afficheElement(Element e){
 }
 void detruireElement(Element e){
     Music *m = (Music*)e; 
-    // free(m->name);
-    // free(m->artist);
-    // free(m->album);
-    // free(m->genre);
+    free(m->name);
     free(m);
     e=NULL;
     
 }
+
 bool equalsElement(Element e1, Element e2){
     Music *m1 = (Music *)e1;
     Music *m2 = (Music *)e2;
