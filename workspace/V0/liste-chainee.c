@@ -155,7 +155,7 @@ Liste cherche_r(Element v,Liste l) {
 // version itérative
 Liste retirePremier_i(Element v, Liste l) {
 	Liste tmp = l;
-	if(cherche_i(v,l)!=NULL){
+	if(cherche_i(v,l)!=NULL){ // A ne plus faire 
 		if(l->val == v){
 			tmp=tmp->suiv;
 			detruireElement(l->val);
