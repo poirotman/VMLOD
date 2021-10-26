@@ -11,14 +11,12 @@ int main(){
     Liste ListMusic = NULL;
     char *line=calloc(250,sizeof(char));
     char *freeline = line;
-    // Music *musique=calloc(1,sizeof(Music));
 
-    printf("%s",fgets(line, 255, f));
+    printf("%s",fgets(line, 250, f));
     for(int i =0; i<2701; i++){
     ListMusic=createList(f,line,ListMusic);
     }
     afficheListe_i(ListMusic);
-    
     fclose(f);
     detruire_i(ListMusic);
     free(freeline);
