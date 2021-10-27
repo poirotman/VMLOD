@@ -13,13 +13,13 @@ int main(){
     char *freeline = line;
 
     printf("%s",fgets(line, 250, f));
-    for(int i =0; i<2701; i++){
     ListMusic=createList(f,line,ListMusic);
-    }
-    afficheListe_i(ListMusic);
     fclose(f);
+    triAbulle(ListMusic);
+    afficheListe_i(ListMusic);
     detruire_i(ListMusic);
     free(freeline);
+
 
     return 0;
 }

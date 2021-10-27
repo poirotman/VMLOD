@@ -24,3 +24,4 @@ Music *createMusic(char* line);
 
 //Fonction qui tri la Liste de musique
 Liste triListOfMusic(Liste ListMusic);
+void triAbulle(Liste ListMusic);

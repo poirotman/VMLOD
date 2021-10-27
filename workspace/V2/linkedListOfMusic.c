@@ -32,9 +32,10 @@ Music *createMusic(char* line){
 }
 
 Liste createList(FILE *f, char* line,Liste ListMusic){
-    fgets(line,255,f);
-    Music *musique = createMusic(line);
-    ListMusic = ajoutFin_i(musique, ListMusic);
+    while(fgets(line,255,f)!=NULL){
+        Music *musique = createMusic(line);
+        ListMusic = ajoutFin_i(musique, ListMusic);
+    }
     return ListMusic;
 }
 
@@ -46,16 +47,33 @@ Liste triListOfMusic(Liste ListMusic){
     }
     else{
         while(ListMusic!=NULL){
-            Music *tmp = (Music *)ListMusic->val;
-            if(tmp->year<minAnnee->year){
+            if(((Music*)(ListMusic->val))->year<minAnnee->year){
                 minAnnee = ListMusic->val;
             }
+            ListMusic=ListMusic->suiv;
         }
     }
     ListMusic=retirePremier_r(minAnnee,FirstMusic);
-    ListMusic=ajoutTete(minAnnee,FirstMusic);
+    ListMusic=ajoutTete(minAnnee,ListMusic);
     ListMusic->suiv=triListOfMusic(ListMusic->suiv);
     return ListMusic;
+}
+void triAbulle(Liste ListMusic){
+    bool estTrie=false;
+    Liste copy;
+    while(estTrie == false){
+        estTrie = true;
+        copy=ListMusic;
+        while(copy->suiv != NULL){
+            if(((Music*)copy->suiv->val)->year<((Music*)copy->val)->year){
+                Music* tmp = copy->val;
+                copy->val=copy->suiv->val;
+                copy->suiv->val=tmp;
+                estTrie=false;
+            }
+            copy=copy->suiv;
+        }
+    }
 }
 
 void afficheElement(Element e){
