@@ -23,5 +23,5 @@ Liste createList(FILE *f, char* line,Liste ListMusic);
 Music *createMusic(char* line);
 
 //Fonction qui tri la Liste de musique
-Liste triListOfMusic(Liste ListMusic);
+void triParSelection(Liste ListMusic);
 void triAbulle(Liste ListMusic);

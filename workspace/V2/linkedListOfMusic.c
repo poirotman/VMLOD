@@ -32,31 +32,30 @@ Music *createMusic(char* line){
 }
 
 Liste createList(FILE *f, char* line,Liste ListMusic){
-    while(fgets(line,255,f)!=NULL){
+    while(fgets(line,255,f)!=NULL ){
         Music *musique = createMusic(line);
         ListMusic = ajoutFin_i(musique, ListMusic);
     }
     return ListMusic;
 }
 
-Liste triListOfMusic(Liste ListMusic){
-    Music *minAnnee = (Music *)ListMusic->val;
-    Liste FirstMusic = ListMusic;
-    if(ListMusic->suiv == NULL){
-        return ListMusic;
-    }
-    else{
-        while(ListMusic!=NULL){
-            if(((Music*)(ListMusic->val))->year<minAnnee->year){
-                minAnnee = ListMusic->val;
+void triParSelection(Liste ListMusic){
+    Liste copy = ListMusic;
+    while(copy->suiv != NULL){
+        Liste min = copy;
+        Liste copy2=copy->suiv;
+        while(copy2 != NULL){
+            if(((Music*)copy2->val)->year<((Music*)min->val)->year){
+                min = copy2;
             }
-            ListMusic=ListMusic->suiv;
+            copy2=copy2->suiv;
         }
+        Music* valeurMin=min->val;
+        min->val=copy->val;
+        copy->val=valeurMin;
+        copy=copy->suiv;
     }
-    ListMusic=retirePremier_r(minAnnee,FirstMusic);
-    ListMusic=ajoutTete(minAnnee,ListMusic);
-    ListMusic->suiv=triListOfMusic(ListMusic->suiv);
-    return ListMusic;
+
 }
 void triAbulle(Liste ListMusic){
     bool estTrie=false;

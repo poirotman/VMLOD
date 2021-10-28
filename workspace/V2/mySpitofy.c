@@ -15,7 +15,8 @@ int main(){
     printf("%s",fgets(line, 250, f));
     ListMusic=createList(f,line,ListMusic);
     fclose(f);
-    triAbulle(ListMusic);
+    
+    triParSelection(ListMusic);
     afficheListe_i(ListMusic);
     detruire_i(ListMusic);
     free(freeline);
