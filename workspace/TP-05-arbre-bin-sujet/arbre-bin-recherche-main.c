@@ -35,14 +35,14 @@ int main(void){
 	afficheGRD_r(a);printf("\n");
 	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
 
-// 	a = supprimer_r(a,6);
-// 	afficheGRD_r(a);printf("\n");
-// 	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
-//
-// 	a = supprimer_r(a,5);
-// 	afficheGRD_r(a);printf("\n");
-// 	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
-//
+	a = supprimer_r(a,6);
+	afficheGRD_r(a);printf("\n");
+	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+
+	a = supprimer_r(a,5);
+	afficheGRD_r(a);printf("\n");
+	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+
 	printf("profondeur 5 = %i\n",profondeur(a,5));
 	printf("profondeur 2 = %i\n",profondeur(a,2));
 	printf("profondeur 3 = %i\n",profondeur(a,3));
@@ -73,17 +73,17 @@ int main(void){
 	printf("recherche(3) = %i\n",p==NULL?-1:p->val);
 	p=recherche_r(a, 8);
 	printf("recherche(8) = %i\n",p==NULL?-1:p->val);
-	//
-	// a = supprimer_r(a,18);
-	// printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
-	// printf("suppression(18) : \n");afficheGRD_r(a);printf("\n");
-	// printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
-	// a = supprimer_r(a,8);
-	// printf("suppression(8) : \n");afficheGRD_r(a);printf("\n");
-	// printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
-	// a = supprimer_r(a,5);
-	// printf("suppression(5) : \n");afficheGDR_r(a);printf("\n");
-	// printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	
+	a = supprimer_r(a,18);
+	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	printf("suppression(18) : \n");afficheGRD_r(a);printf("\n");
+	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	a = supprimer_r(a,8);
+	printf("suppression(8) : \n");afficheGRD_r(a);printf("\n");
+	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	a = supprimer_r(a,5);
+	printf("suppression(5) : \n");afficheGDR_r(a);printf("\n");
+	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
 
 	detruire_r(a);
 

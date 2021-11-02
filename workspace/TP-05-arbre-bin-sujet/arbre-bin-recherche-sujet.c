@@ -193,7 +193,7 @@ ArbreBinaire min(ArbreBinaire a){
 		return NULL;
 	}
 	else{
-		while(a->filsGauche != NULL){
+		while(!estVide(a->filsGauche)){
 			a=a->filsGauche;
 		}
 	}
@@ -237,21 +237,41 @@ ArbreBinaire recherche_r(ArbreBinaire a, Element elem){
 
 // suppime x de a
 ArbreBinaire supprimer_r(ArbreBinaire a,Element x){
-	if(!estVide(a)){
-		ArbreBinaire papa = pere(a,x);
-		ArbreBinaire copy;
-		if(pere != NULL){
-			if(!estVide(papa->filsDroit)){
-				if(papa->filsDroit->val == x){
-					if(!estVide(papa->filsDroit->filsDroit)){
-						copy=min(papa->filsDroit->filsDroit);
-						free(papa->filsDroit);
-						papa->filsDroit=copy;
-					}
-				}
-			}
-		}
+	
+	// Si la chaine ne contient pas l'élément
+	if( estVide(a)){
+		return a;
 	}
+
+	// Principe de récursivité, si la valeur est plus grande on va dans le fils droit si elle est plus petite, dans le fils droit
+	if(a->val<x){
+		a->filsDroit = supprimer_r(a->filsDroit,x);
+	}
+	else if(a->val>x){
+		a->filsGauche = supprimer_r(a->filsGauche,x);
+	}
+	// Cas d'arret, la valeur n'est ni plus petite, ni plus grande et a n'est pas vide donc on est sur la valeur
+	else{
+
+		// Si l'un des fils est vide ou remplace juste par l'autre fils. Si les deux sont vide alors on supprimera simplement l'élément.
+		if(estVide(a->filsDroit)){
+			ArbreBinaire tmp = a->filsGauche;
+			free(a);
+			return tmp;
+		}
+		else if(estVide(a->filsGauche)){
+			ArbreBinaire tmp = a->filsDroit;
+			free(a);
+			return tmp;
+		}
+		// Si aucun des deux fils n'est vide on cherche le minimum du fils Droit puis on remplace la valeur du noeud à supprimé.
+		// On doit donc maintenant supprimé un nouveau noeud, celui avec la valeur minimum dans le fils Droit.
+		ArbreBinaire tmp = min(a->filsDroit);
+		a->val=tmp->val;
+		a->filsDroit=supprimer_r(a->filsDroit, tmp->val);
+
+	}
+	return a;
 }
 
 void detruire_r(ArbreBinaire a){
